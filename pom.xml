@@ -11,6 +11,7 @@
 
     <modules>
         <module>core</module>
+        <module>app-desktop-javafx</module>
         <module>app-console-simple</module>
         <module>app-web-spring</module>
         <module>infra-persistence-spring</module>

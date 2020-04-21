@@ -1,4 +1,4 @@
-import be.tomcools.javamod.core.impl.BeerBarImpl;
+import be.tomcools.javamod.core.api.providers.BeerBarProvider;
 
 module core {
     exports be.tomcools.javamod.core.domain;
@@ -7,5 +7,5 @@ module core {
 
     uses be.tomcools.javamod.core.dependencies.BeerRepository;
 
-    provides be.tomcools.javamod.core.api.BeerBar with BeerBarImpl;
+    provides be.tomcools.javamod.core.api.BeerBar with BeerBarProvider;
 }
