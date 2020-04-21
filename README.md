@@ -22,6 +22,12 @@ Lombok requires 2 things to work:
 - You need to require it in your module with **"requires static"**
 - You need to configure your maven project to do the annotation-processing in a JPMS world. For more info on that, check [this issue on github](https://github.com/rzwitserloot/lombok/issues/1723).
 
+#### app-desktop-javafx
+
+A JavaFX application with FXML (openjfx)
+
+- Required us to open our Controller to javafx.fxml;
+
 #### app-web-spring
 
 A Spring Boot application, with a simple RestController to invoke actions on the core module.
@@ -62,12 +68,17 @@ At this time, not all modules will work together. This is mainly because the Spr
 
 ---
 
+
+All commands assume you are at the root of the project
 ```bash
-All commands assume you are in the root of the project
 
 # Running with Spring Web as Application Layer (app-web-spring)
+# --add-modules java.instrument needed for Spring
 java --add-modules java.instrument -p bundler/target/modules/. --module app.web.spring/be.tomcools.javamod.app.web.spring.WebApplication
 
 # Running with Simple Console as Application Layer (app-console-simple)
-java --add-modules java.instrument -p bundler/target/modules/. --module app.console.simple/be.tomcools.javamod.app.console.ConsoleStarter
+java -p bundler/target/modules/. --module app.console.simple/be.tomcools.javamod.app.console.ConsoleStarter
+
+# Running with Spring Web as Application Layer (app-desktop-javafx)
+java -p bundler/target/modules/. --module app.desktop.javafx/be.tomcools.javamod.app.javafx.FxStarter
 ```

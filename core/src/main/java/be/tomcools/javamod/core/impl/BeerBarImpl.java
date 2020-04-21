@@ -15,13 +15,6 @@ public class BeerBarImpl implements BeerBar {
         this.repository = repository;
     }
 
-    public static BeerBar provider() {
-        return new BeerBarImpl(ServiceLoader.load(BeerRepository.class).findFirst()
-                .orElseThrow(() ->  {
-                    throw new RuntimeException("Missing BeerRepository implementation On Module Path");
-                }));
-    }
-
     @Override
     public List<Beer> getBeerMenu() {
         return repository.getAllBeers();
