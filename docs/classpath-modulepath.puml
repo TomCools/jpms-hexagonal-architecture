@@ -1,0 +1,28 @@
+@startuml
+title: Class Path vs Module Path
+
+package "Class Path" as classpath {
+    package "unnamed-module" as unnamedmodule {
+        [Jar]
+        [Class]
+    }
+}
+
+package "Module Path" as modulepath {
+    package "automatic-modules" as automaticmodules {
+        [Non-Modular Jar]
+    }
+
+    package "named-modules" as namedmodules {
+        [Modular Jar]
+    }
+}
+
+unnamedmodule -> modulepath: requires all modules, exports all
+automaticmodules -> unnamedmodule: can read
+automaticmodules -> namedmodules: requires all named modules
+automaticmodules -> automaticmodules: exports all
+namedmodules -> unnamedmodule: can not read
+namedmodules --> automaticmodules: can require/use
+
+@enduml
