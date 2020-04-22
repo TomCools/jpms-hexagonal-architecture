@@ -1,0 +1,14 @@
+@startuml
+title: Module Graph
+package "Module Path" {
+  [another.unused.module] as unused #red
+  [my.starter.module] as starter #lime
+  starter --> [java.base]: requires
+  starter --> [my.core.module]: requires
+  [my.core.module] --> [java.base]: requires
+  [my.infra.module] --> [java.base]: requires
+  [my.core.module] --> [my.infra.module]: uses
+}
+note right of unused: not loaded
+note top of starter: application root
+@enduml
