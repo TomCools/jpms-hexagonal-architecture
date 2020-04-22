@@ -1,0 +1,21 @@
+@startuml
+title: Module Graph with --add-modules=ALL-MODULE-PATH
+package "Module Path" {
+
+  [my.starter.module] as starter #lime
+  [another.module] as unused #lime
+  [my.core.module] as core #lime
+  [my.infra.module] as infra #lime
+  [java.base] as base #lime
+  starter --> base: requires
+  starter --> core: requires
+  core --> base: requires
+  infra --> base: requires
+  core--> infra: uses
+}
+note top of unused: root module
+note top of starter: root module
+note top of core: root module
+note top of infra: root module
+note right of base: root module
+@enduml
