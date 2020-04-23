@@ -54,7 +54,7 @@ It shows how to set up the repositories when it is separated from the main Sprin
 Setup your combination of modules you want to run in the pom.xml file of the **bundler project** and run
 ```bash
 # Build solution (in root)
-mvn install
+mvn verify
 ```
 
 At this time, not all modules will work together. This is mainly because the Spring Persistence still depends on a Spring application context.
